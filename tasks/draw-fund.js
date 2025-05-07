@@ -5,11 +5,11 @@ task("draw-fund", "合约提款").addParam("address", "fund contract address").s
 
     const [owner] = await ethers.getSigners()
     
-    const fundMe = (await ethers.getContractFactory("Fund")).attach(taskArgs.address)
+    const fund = (await ethers.getContractFactory("Fund")).attach(taskArgs.address)
     console.log(`提款合约地址: ${taskArgs.address}`)
 
     try {
-      const tx = await fundMe.connect(owner).drawFund()
+      const tx = await fund.connect(owner).drawFund()
       await tx.wait()
       console.log("提款成功!")
     } catch (err) {

@@ -1,7 +1,7 @@
 const { task } = require("hardhat/config")
 
 task("deploy-fund", "部署合约").setAction(async(taskArgs, hre) => {
-    const { ethers } = hre
+    const ethers = hre.ethers
 
     const [owner] = await ethers.getSigners()
     console.log(`部署合约owner账户:${owner.address}`)
