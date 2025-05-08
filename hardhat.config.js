@@ -21,7 +21,7 @@ const CONFIRMATIONS_BLOCK = 5
 
 module.exports = {
   solidity: "0.8.28",
-  defaultNetwork:"sepolia", // sepolia hardhat
+  defaultNetwork:"hardhat", // sepolia hardhat
 
   mocha: {
     timeout: 300000
