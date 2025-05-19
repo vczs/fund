@@ -1,4 +1,4 @@
-const { ethers, getNamedAccounts, deployments,  network } = require("hardhat");
+const { ethers, deployments,  network } = require("hardhat");
 const { time, mine } = require("@nomicfoundation/hardhat-network-helpers");
 const { assert, expect } = require("chai");
 
