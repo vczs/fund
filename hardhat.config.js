@@ -20,8 +20,9 @@ const DEPLOY_MENT_TIME = 180
 const CONFIRMATIONS_BLOCK = 5
 
 module.exports = {
-  solidity: "0.8.28",
   defaultNetwork:"hardhat", // sepolia hardhat
+
+  solidity: "0.8.28",
 
   mocha: {
     timeout: 300000
