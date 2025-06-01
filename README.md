@@ -23,13 +23,8 @@ npx hardhat compile
 ```
 
 ```shell
-npx hardhat run ./scripts/depolyFunMe.js
-npx hardhat deploy
-npx hardhat test
-```
-
-```shell
 npx hardhat node
+npx hardhat run ./scripts/depolyFunMe.js --network localhost
 npx hardhat deploy --tags all --network localhost --reset
 npx hardhat {task-name} --network localhost
 
