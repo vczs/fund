@@ -11,7 +11,6 @@ task("tx-fund", "合约众筹").addParam("address", "fund contract address").set
 
     const tx1 = await fund.connect(account1).fund({ value: ethers.parseEther("0.001") });
     await tx1.wait();
-    console.log(``);
     let contractBalance = await ethers.provider.getBalance(await fund.getAddress());
     console.log(`账户1众筹:0.001 ETH,合约余额: ${ethers.formatEther(contractBalance)} ETH`);
 
@@ -20,9 +19,9 @@ task("tx-fund", "合约众筹").addParam("address", "fund contract address").set
     contractBalance = await ethers.provider.getBalance(await fund.getAddress());
     console.log(`账户1众筹:0.002 ETH,合约余额: ${ethers.formatEther(contractBalance)} ETH`);
 
-    const account1InFund = await ethers.formatEther(await fund.fundAmount(await account1.getAddress()))
+    const account1InFund = await ethers.formatEther(await fund.fundAmount(account1.address))
     console.log(`合约中账户1众筹信息:${account1.address} is ${account1InFund} ETH`)
-    const account2InFund = await ethers.formatEther(await fund.fundAmount(await account2.getAddress()))
+    const account2InFund = await ethers.formatEther(await fund.fundAmount(account2.address))
     console.log(`合约中账户2众筹信息${account2.address} is ${account2InFund} ETH`)
 })
 

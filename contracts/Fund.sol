@@ -74,6 +74,7 @@ contract Fund{
         ( ,int answer, , ,) = dataFeed.latestRoundData();
         return answer;
     }
+
     // eth转usd
     function ethToUsd(uint256 weiAmount) internal view returns(uint256) {
         uint256 price = uint256(getChainlinkDataFeedLatestAnswer());

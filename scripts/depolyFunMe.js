@@ -1,5 +1,6 @@
 require("@nomicfoundation/hardhat-verify")
 const { NET_WORK_ID_CONFIG } = require("../hardhat.config")
+const { MOCK_DECIMAL, MOCK_INITIAL_ANSWER } = require("../dev-hardhat-config");
 
 const hre = require("hardhat")
 const ethers = hre.ethers
@@ -9,7 +10,16 @@ async function main(){
     console.log(`部署合约owner账户:${account1.address}`)
 
     const deployMentTime = 100
-    const ethUsdDataFeed = NET_WORK_ID_CONFIG[network.config.chainId].ethUsdDataFeed
+    let ethUsdDataFeed
+    if (hre.network.name === "hardhat") {
+        console.log("[hardhat网络],部署MockV3Aggregator")
+        const MockV3Aggregator = await ethers.getContractFactory("MockV3Aggregator")
+        const mock = await MockV3Aggregator.deploy(MOCK_DECIMAL, BigInt(MOCK_INITIAL_ANSWER))
+        await mock.waitForDeployment()
+        ethUsdDataFeed = await mock.getAddress()
+    } else {
+        ethUsdDataFeed = NET_WORK_ID_CONFIG[hre.network.config.chainId].ethUsdDataFeed
+    }
     console.log(`众筹持续时间:${deployMentTime},ETH喂价格合约地址:${ethUsdDataFeed}`)
 
     const fund = await ethers.getContractFactory("Fund").then(factory => factory.connect(account1).deploy(deployMentTime, ethUsdDataFeed));

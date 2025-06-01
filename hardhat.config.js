@@ -3,10 +3,10 @@ require("hardhat-deploy");
 require("@chainlink/env-enc").config();
 require("./task");
 
-const SEPOLIA_URL = process.env.SEPOLIA_URL;
 const ACCOUNT1_PRIVATE_KEY = process.env.ACCOUNT1_PRIVATE_KEY;
 const ACCOUNT2_PRIVATE_KEY = process.env.ACCOUNT2_PRIVATE_KEY;
 const ETHERSCAN_KEY = process.env.ETHERSCAN_KEY;
+const SEPOLIA_URL = process.env.SEPOLIA_URL;
 
 const NET_WORK_ID_CONFIG = {
   11155111: {

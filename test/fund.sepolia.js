@@ -1,6 +1,6 @@
 const { ethers, getNamedAccounts, deployments } = require("hardhat");
 const { time, mine } = require("@nomicfoundation/hardhat-network-helpers");
-const { assert, expect } = require("chai");
+const { expect } = require("chai");
 
 const { DEV_NETWORK_NAME } = require("../dev-hardhat-config");
 
