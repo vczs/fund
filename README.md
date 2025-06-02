@@ -27,6 +27,7 @@ npx hardhat node
 npx hardhat run ./scripts/depolyFunMe.js --network localhost
 npx hardhat deploy --tags all --network localhost --reset
 npx hardhat {task-name} --network localhost
+npx hardhat test --network localhost
 
 # localhost 挖矿
 npx hardhat console --network localhost
